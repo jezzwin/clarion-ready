@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 
 const HUGGINGFACE_API_URL = 'https://api-inference.huggingface.co/models/google/flan-t5-base';
-const HUGGINGFACE_API_KEY = process.env.HUGGINGFACE_API_KEY;
+const HUGGINGFACE_API_KEY = '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';
 
 async function callHuggingFace(prompt: string): Promise<string> {
   const response = await fetch(HUGGINGFACE_API_URL, {
