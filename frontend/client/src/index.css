@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 230 30% 10%;
+    --foreground: 210 40% 98%;
+    --card: 224 34% 13%;
+    --card-foreground: 210 40% 98%;
+    --popover: 224 34% 13%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 250 91% 65%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 230 20% 20%;
+    --muted-foreground: 210 40% 60%;
+    --accent: 250 91% 65%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 240 10% 25%;
+    --input: 240 10% 25%;
+    --ring: 250 91% 65%;
+    --radius: 0.5rem;
+  }
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-feature-settings: "rlig" 1, "calt" 1;
+  background-image: 
+    radial-gradient(circle at 10% 20%, hsla(217, 91%, 60%, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, hsla(250, 91%, 65%, 0.05) 0%, transparent 50%),
+    linear-gradient(135deg, hsla(220, 60%, 5%, 0.9) 0%, hsla(230, 60%, 10%, 0.95) 100%);
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.logo-gradient {
+  background: linear-gradient(to right, hsl(217 91% 60%), hsl(250 91% 65%));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: bold;
+}
+
+/* Animation for futuristic title */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+
+@keyframes text-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-text-reveal {
+  animation: text-reveal 1.5s ease-out forwards;
+}
+
+.interactive-button {
+  transition: all 0.2s ease;
+  background: linear-gradient(to right, hsl(217 91% 60%), hsl(250 91% 65%));
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.interactive-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: all 0.6s;
+}
+
+.interactive-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.interactive-button:hover::before {
+  left: 100%;
+}
+
+.interactive-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes animate-reverse {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+.animate-reverse {
+  animation: animate-reverse 1.5s linear infinite;
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--card));
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted));
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
